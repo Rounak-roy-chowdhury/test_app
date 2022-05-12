@@ -1,0 +1,17 @@
+name: remote ssh command
+on: [push]
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }} 
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+		docker run -v /var/run.docker.sock:/var/run/docker.sock -e REPO='https://github.com/MithunRosinth/demo_closet_serv.git' -d m1v1n/closet_start
