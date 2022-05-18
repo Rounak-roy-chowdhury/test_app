@@ -16,7 +16,6 @@ jobs:
         port: ${{ secrets.PORT }}
         source: "trigger.sh"
         target: "trigger"
-        strip_components: 1
         
         
     - name: executing remote ssh commands using passwo$rd
