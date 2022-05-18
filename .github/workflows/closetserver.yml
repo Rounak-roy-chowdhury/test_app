@@ -6,11 +6,26 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: executing remote ssh commands using password
+    - uses: actions/checkout@master
+    - name: copy file via ssh password
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        port: ${{ secrets.PORT }}
+        source: "trigger.sh"
+        target: "trigger"
+        strip_components: 1
+        
+        
+    - name: executing remote ssh commands using passwo$rd
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }} 
-        password: ${{ secrets.PASSWORD }}
+        key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
-        script: docker run -v /var/run.docker.sock:/var/run/docker.sock -e REPO='https://github.com/MithunRosinth/demo_closet_serv.git' -d m1v1n/closet_start
+        script: |
+          chmod +x $HOME/trigger/trigger.sh
+          /bin/bash $HOME/trigger/trigger.sh
