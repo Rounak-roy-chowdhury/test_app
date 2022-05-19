@@ -10,4 +10,4 @@ then
 	docker run -v $HOME/kubeconfig:/kubeconfig -p 7777:7777 -d --name closet_octant m1v1n/octant
 fi
 
-docker run -v /var/run.docker.sock:/var/run/docker.sock -v $HOME/config:/root/config -e REPO='https://github.com/MithunRosinth/demo_closet_serv -d m1v1n/closet_start
+docker run -v /var/run.docker.sock:/var/run/docker.sock -v $HOME/config:/root/config -e REPO='https://github.com/MithunRosinth/demo_closet_serv' -d m1v1n/closet_start
