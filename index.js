@@ -1,12 +1,12 @@
-const http = require('http');
-const port = process.env.PORT || 3000;
+var express = require('express');
+var app = express();
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  const msg = 'Hello Closet Server\n'
-  res.end(msg);
+app.get('/', function (req, res) {
+  res.send('Closet Server\n');
 });
 
-server.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}/`);
+var server = app.listen(3000, function () {
+  var port = server.address().port;
+
+  console.log('Your nodejs app is listening at port %s',  port);
 });
