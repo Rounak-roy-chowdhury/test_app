@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 app.get('/', function (req, res) {
-  res.send('Hello! Closet Server!! Dry Run!\n');
+  res.send('Hello! Closet Server!! Dry Run 2!\n');
 });
 
 var server = app.listen(3000, function () {
